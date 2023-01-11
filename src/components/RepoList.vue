@@ -4,7 +4,11 @@
       {{ errorMessage }}
     </p>
     <div class="repo-list" ref="reposContainer">
-      <RepoItem v-for="(repo, index) in postsList" :repo="repo" :key="index" />
+      <RepoItem
+        v-for="(repo, index) in postsList"
+        :repo="{ ...repo, index }"
+        :key="index"
+      />
     </div>
     <Loader v-show="isLoading" />
   </div>
@@ -77,7 +81,7 @@ export default {
 }
 .repo-list {
   display: grid;
-  gap: 16px;
+  gap: 20px;
   grid-auto-columns: minmax(100%, 500px);
   justify-items: center;
   margin-bottom: 10px;

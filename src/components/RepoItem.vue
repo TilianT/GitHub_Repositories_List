@@ -1,6 +1,7 @@
 <template>
   <div class="repo-item">
     <div class="repo-item__header">
+      <span class="repo-item__num">{{ repo.index+1 }}</span>
       <a :href="repo.html_url" target="_blank">{{ repo.full_name }}</a>
       <p>
         Stars:
@@ -29,6 +30,7 @@ export default {
   max-width: 580px;
   width: 100%;
   height: 100%;
+  position: relative;
 
   text-align: left;
 
@@ -45,7 +47,7 @@ export default {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 14px;
+    padding: 24px 14px 14px 14px;
 
     background-color: #dfe2fc;
     border-top-left-radius: 8px;
@@ -57,6 +59,24 @@ export default {
       font-size: 1.2rem;
     }
   }
+  &__num,
+  &__stars {
+    font-weight: bold;
+
+    color: #f9d696;
+    background: rgba(148, 133, 248, 1);
+    border-radius: 14px;
+  }
+  &__num {
+    position: absolute;
+    top: -5px;
+    left: -10px;
+    min-width: 50px;
+    height: 20px;
+    padding: 0 8px;
+
+    text-align: center;
+  }
   &__description {
     padding: 14px;
   }
@@ -65,11 +85,6 @@ export default {
     padding: 4px 6px;
 
     font-size: 0.8rem;
-    font-weight: bold;
-
-    color: #f9d696;
-    background: rgba(148, 133, 248, 0.5);
-    border-radius: 14px;
   }
 }
 </style>
