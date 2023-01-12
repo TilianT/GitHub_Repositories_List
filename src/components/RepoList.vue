@@ -4,11 +4,13 @@
       {{ errorMessage }}
     </p>
     <div class="repo-list" ref="reposContainer">
-      <RepoItem
-        v-for="(repo, index) in postsList"
-        :repo="{ ...repo, index }"
-        :key="index"
-      />
+      <transition-group name="fade">
+        <RepoItem
+          v-for="(repo, index) in postsList"
+          :repo="{ ...repo, index }"
+          :key="index"
+        />
+      </transition-group>
     </div>
     <Loader v-show="isLoading" />
   </div>
@@ -85,5 +87,14 @@ export default {
   grid-auto-columns: minmax(100%, 500px);
   justify-items: center;
   margin-bottom: 10px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+  transform: translateX(0px);
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+  transform: translateX(-10px);
 }
 </style>
